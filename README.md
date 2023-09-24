@@ -3,6 +3,8 @@
 Setting up the north-east-sea canal around Rendsburg as a 3D-Scene
 
 
+![alt text](https://github.com/DarkExceptionSoftware/RNOK/blob/main/preview.png)
+
 
 CONTROLS
 
