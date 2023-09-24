@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cga1xqu5t53t7"
+path="res://.godot/imported/clipmesh_distorted.obj-4d6963b660b458e9f45b0db006b666db.mesh"
+
+[deps]
+
+files=["res://.godot/imported/clipmesh_distorted.obj-4d6963b660b458e9f45b0db006b666db.mesh"]
+
+source_file="res://assets/clipmesh_distorted.obj"
+dest_files=["res://.godot/imported/clipmesh_distorted.obj-4d6963b660b458e9f45b0db006b666db.mesh", "res://.godot/imported/clipmesh_distorted.obj-4d6963b660b458e9f45b0db006b666db.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

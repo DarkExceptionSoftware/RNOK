@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq3vvtkkkyd87"]
+
+[ext_resource type="FontFile" uid="uid://bp3kwql3m47gh" path="res://assets/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Regular.ttf" id="1_40n60"]
+[ext_resource type="Script" path="res://Scenes/mainmenu.gd" id="1_a3ead"]
+
+[sub_resource type="Gradient" id="Gradient_ybidk"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n00wx"]
+gradient = SubResource("Gradient_ybidk")
+
+[sub_resource type="Gradient" id="Gradient_urum3"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cyjn4"]
+gradient = SubResource("Gradient_urum3")
+
+[sub_resource type="ImageTexture" id="ImageTexture_w8k1b"]
+
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("c", "disclamer")]
+offset = Vector2(10, 5)
+scale = Vector2(0.98, 0.98)
+transform = Transform2D(0.98, 0, 0, 0.98, 10, 5)
+script = ExtResource("1_a3ead")
+c = NodePath("Control")
+disclamer = NodePath("Control/VBoxContainer/Disclamer")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 281.0
+offset_top = 142.5
+offset_right = 831.0
+offset_bottom = 465.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="MenuTitle" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource("1_40n60")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+vertical_alignment = 1
+
+[node name="Line_Left" type="TextureButton" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+texture_normal = SubResource("GradientTexture1D_n00wx")
+stretch_mode = 0
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_40n60")
+theme_override_font_sizes/font_size = 60
+text = "Options Menu"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_40n60")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="Line_Right" type="TextureButton" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+texture_normal = SubResource("GradientTexture1D_cyjn4")
+stretch_mode = 0
+
+[node name="Disclamer" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource("1_40n60")
+theme_override_font_sizes/font_size = 30
+text = " "
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="MenuTitle" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 11
+theme_override_fonts/font = ExtResource("1_40n60")
+theme_override_font_sizes/font_size = 30
+text = "Wave Scale"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("ImageTexture_w8k1b")
+
+[node name="HSlider" type="HSlider" parent="Control/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 2
+offset_left = 30.0
+offset_right = 427.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[connection signal="mouse_entered" from="Control/VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_button_pressed" binds= [""]]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="pressed" from="Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

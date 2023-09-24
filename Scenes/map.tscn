@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtlsvc83vp1go"]
+
+[ext_resource type="Script" path="res://Scripts/map.gd" id="1_vtdt0"]
+[ext_resource type="Shader" path="res://Shader/map_shader.gdshader" id="1_xqnrc"]
+[ext_resource type="Texture2D" uid="uid://d3c12irp0csqc" path="res://assets/rendsburg_8km_height.png" id="2_jpfgk"]
+[ext_resource type="Gradient" uid="uid://bjfrfdadgy6yp" path="res://assets/landscape_gradient.tres" id="3_fuei5"]
+[ext_resource type="Texture2D" uid="uid://w1vroksh2a61" path="res://assets/rendsburg_8km_sat.png" id="4_n0c8e"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_oueyi"]
+size = Vector2(256, 256)
+subdivide_width = 255
+subdivide_depth = 255
+orientation = 1
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fkn0i"]
+gradient = ExtResource("3_fuei5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfhu0"]
+render_priority = 0
+shader = ExtResource("1_xqnrc")
+shader_parameter/uv_scale = 4.0
+shader_parameter/uvx = 0.0
+shader_parameter/uvy = 0.0
+shader_parameter/Terrain_height = 50.0
+shader_parameter/gradient_blend = 0.5
+shader_parameter/HeightMap = ExtResource("2_jpfgk")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_fkn0i")
+shader_parameter/ground_texture = ExtResource("4_n0c8e")
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("ground_mesh")]
+script = ExtResource("1_vtdt0")
+ground_mesh = NodePath("Central_Mesh")
+
+[node name="Central_Mesh" type="CSGMesh3D" parent="."]
+mesh = SubResource("QuadMesh_oueyi")
+material = SubResource("ShaderMaterial_nfhu0")

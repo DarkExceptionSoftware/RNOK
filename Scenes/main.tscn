@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4ygp8hlgns8c"]
+
+[ext_resource type="Material" uid="uid://h8k7d4kr1h8v" path="res://assets/sky_material.tres" id="1_b225d"]
+[ext_resource type="PackedScene" uid="uid://dh6sstcxbf0yg" path="res://Scenes/hud.tscn" id="1_m413t"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_jfvid"]
+[ext_resource type="Script" path="res://Scripts/day.gd" id="2_uqiia"]
+[ext_resource type="PackedScene" uid="uid://dtlsvc83vp1go" path="res://Scenes/map.tscn" id="3_hr2gw"]
+[ext_resource type="PackedScene" uid="uid://c15ej40xawhtc" path="res://Scenes/waterplane.tscn" id="4_qscrb"]
+
+[sub_resource type="Sky" id="Sky_2wjj2"]
+sky_material = ExtResource("1_b225d")
+
+[sub_resource type="Environment" id="Environment_lk25u"]
+background_mode = 2
+sky = SubResource("Sky_2wjj2")
+ambient_light_source = 3
+reflected_light_source = 2
+glow_enabled = true
+fog_light_color = Color(0, 0, 0.423529, 1)
+fog_density = 0.0
+fog_height = 2.5
+fog_height_density = 0.2
+volumetric_fog_density = 0.7698
+volumetric_fog_emission = Color(1, 1, 1, 1)
+volumetric_fog_emission_energy = 272.52
+volumetric_fog_gi_inject = 1.96
+volumetric_fog_anisotropy = -0.1
+volumetric_fog_length = 320.0
+volumetric_fog_detail_spread = 6.0
+volumetric_fog_ambient_inject = 4.63
+volumetric_fog_sky_affect = 0.326
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lk25u")
+script = ExtResource("2_uqiia")
+
+[node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.988494, -0.151261, 0, 0.151261, 0.988494, 0, 44.3434, 0)
+shadow_enabled = true
+
+[node name="HUD" parent="." instance=ExtResource("1_m413t")]
+
+[node name="Orbit" type="CharacterBody3D" parent="." node_paths=PackedStringArray("water", "ground", "camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+script = ExtResource("2_jfvid")
+water = NodePath("../Waterplane")
+ground = NodePath("../Map")
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="Orbit"]
+
+[node name="Map" parent="." instance=ExtResource("3_hr2gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 0)
+
+[node name="Waterplane" parent="." instance=ExtResource("4_qscrb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)

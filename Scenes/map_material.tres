@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dgc5vphwme5y4"]
+
+[ext_resource type="Shader" uid="uid://dlm3uw2g2dr00" path="res://Scenes/map.tres" id="1_ppsx0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_67cxm"]
+noise_type = 0
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xosj4"]
+generate_mipmaps = false
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_67cxm")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ppsx0")
+shader_parameter/ScaleXY = 0.82
+shader_parameter/uvx = 0.1
+shader_parameter/uvy = 0.1
+shader_parameter/Terrain_height = 6
+shader_parameter/ScaleXY2 = 0.0
+shader_parameter/uvx2 = 0.1
+shader_parameter/uvy2 = 0.1
+shader_parameter/Height = SubResource("NoiseTexture2D_xosj4")
+shader_parameter/HeightMap = SubResource("NoiseTexture2D_xosj4")
