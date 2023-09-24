@@ -1,20 +1,20 @@
 # RNOK
 Setting up the north-east-sea canal around Rendsburg as a 3D-Scene
 
-Controls
+CONTROLS
 ESC - Menu
 WSAD - Move Forward Backward, Starfe Left Right
 SHIFT SPACE - Up Down
 MOUSE - Look around
 
-State of project:
+STATE OF PROJECT
 Freelook Camera Controls
 Wandering Terrain Shader
 Water Shader
 Day/Night Shader
 Automated Menu Creation
 
-ToDo:
+TODO
 More Polish
 Sound
 Models (Ships, Bridges)
